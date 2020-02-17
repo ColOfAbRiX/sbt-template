@@ -1,0 +1,13 @@
+.bloop
+.history
+.idea
+.metals
+.vscode
+*.class
+*.iml
+*.ipr
+*.iws
+*.log
+metals.sbt
+out
+target

@@ -1,0 +1,6 @@
+-J-Xss4m
+-J-Xms128M
+-J-Xmx512M
+-J-XX:MaxHeapSize=512M
+-J-XX:+UseConcMarkSweepGC
+-Duser.timezone=UTC
