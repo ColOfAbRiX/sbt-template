@@ -4,7 +4,7 @@ Project introduction
 
 ## License
 
-Copyright &copy; 2019 Fabrizio Colonna
+MIT
 
 ## Author Information
 

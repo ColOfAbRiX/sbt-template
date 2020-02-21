@@ -1,64 +1,139 @@
-import Compiler._
 import Dependencies._
+import AllProjectsKeys.autoImport._
+
+lazy val ScalaLangVersion = "2.13.0"
 
 // General
-val ScalaVersion   = "2.13.0"
-val ProjectVersion = "0.1.0-SNAPSHOT"
+ThisBuild / organization := "com.colofabrix.scala.sample"
+ThisBuild / scalaVersion := ScalaLangVersion
 
 // Compiler options
-scalacOptions in ThisBuild ++= TpolecatOptions
+ThisBuild / scalacOptions ++= Compiler.TpolecatOptions ++ Seq("-P:splain:all")
+ThisBuild / developers := List(
+  Developer("ColOfAbRiX", "Fabrizio Colonna", "@ColOfAbRiX", url("http://github.com/ColOfAbRiX")),
+)
+
+// GIT version information
+ThisBuild / dynverVTagPrefix := false
 
 // Wartremover
-wartremoverExcluded in ThisBuild ++= (baseDirectory.value * "**" / "src" / "test").get
-wartremoverErrors in ThisBuild ++= Warts.allBut(
+ThisBuild / wartremoverExcluded ++= (baseDirectory.value * "**" / "src" / "test").get
+ThisBuild / wartremoverErrors ++= Warts.allBut(
   Wart.Any,
   Wart.Nothing,
   Wart.Overloading,
   Wart.ToString,
 )
 
-// Standardize formatting
-scalafmtOnCompile in ThisBuild := true
+// Scalafmt
+ThisBuild / scalafmtOnCompile := true
 
 // Global dependencies and compiler plugins
-libraryDependencies in ThisBuild ++= Seq(
+ThisBuild / libraryDependencies ++= Seq(
   BetterMonadicForPlugin,
   KindProjectorPlugin,
   PPrintDep,
+  SlainPlugin,
   WartremoverPlugin,
 ) ++ Seq(
-  LoggingBundle,
 ).flatten
 
+//  PROJECTS  //
+
 // Root project
-lazy val projectRoot: Project = project
+lazy val rootProject: Project = project
   .in(file("."))
   .settings(
-    organization := "com.colofabrix.scala.sample",
     name := "sample",
-    version := ProjectVersion,
-    scalaVersion := ScalaVersion,
-    libraryDependencies ++= Seq(),
+    description := "Sample Project",
   )
   .aggregate(
-    sampleProject,
+    sampleBasic,
+    sampleIoBasic,
+    sampleApp,
+    sampleWeb,
   )
 
-// Sampleproject
-lazy val sampleProject = project
-  .in(file("sample-project"))
+// Utils project
+lazy val sampleUtils = project
+  .in(file("module-utils"))
+  .settings(
+    name := "utils",
+    description := "Global Utilities",
+    libraryDependencies ++= Seq(
+      CatsCoreDep,
+      CatsScalaTestDep,
+      FS2CoreDep,
+      ScalatestDep,
+    ),
+  )
+
+// Sample basic application
+lazy val sampleBasic = project
+  .in(file("module-basic"))
   .dependsOn(
   )
   .settings(
-    organization := "com.colofabrix.scala.sample",
-    name := "sample-project",
-    version := ProjectVersion,
-    scalaVersion := ScalaVersion,
+    name := "basic",
+    description := "Basic application",
     libraryDependencies ++= Seq(
-      PureconfigDep,
+    ).flatten ++ Seq(
+    ),
+  )
+
+// Sample basic application with IO
+lazy val sampleIoBasic = project
+  .in(file("module-io-basic"))
+  .dependsOn(
+  )
+  .enablePlugins(BuildInfoPlugin)
+  .settings(
+    name := "io-basic",
+    description := "Basic application with IO",
+    buildInfoPackage := projectPackage.value,
+    buildInfoKeys ++= projectBuildInfo.value,
+    libraryDependencies ++= Seq(
+      CatsBundle,
+    ).flatten ++ Seq(
+    ),
+  )
+
+// Sample application
+lazy val sampleApp = project
+  .in(file("module-app"))
+  .dependsOn(
+    sampleUtils
+  )
+  .enablePlugins(BuildInfoPlugin)
+  .settings(
+    name := "app",
+    description := "Basic full-fledged application",
+    buildInfoPackage := projectPackage.value,
+    buildInfoKeys ++= projectBuildInfo.value,
+    libraryDependencies ++= Seq(
+      CatsBundle,
+      LoggingBundle
+    ).flatten ++ Seq(
+      PureconfigDep
+    ),
+  )
+
+// Sample web application
+lazy val sampleWeb = project
+  .in(file("module-web"))
+  .dependsOn(
+    sampleUtils
+  )
+  .enablePlugins(BuildInfoPlugin)
+  .settings(
+    name := "web",
+    description := "Basic web application",
+    buildInfoPackage := projectPackage.value,
+    buildInfoKeys ++= projectBuildInfo.value,
+    libraryDependencies ++= Seq(
+      HttpServiceBundle,
+    ).flatten ++ Seq(
       ScalatestDep,
       ShapelessDep,
-    ) ++ Seq(
-      CatsBundle,
-    ).flatten,
+    ),
   )
