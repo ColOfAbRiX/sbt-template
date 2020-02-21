@@ -8,11 +8,11 @@
 *.ipr
 *.iws
 *.log
-boot/
-lib_managed/
 metals.sbt
 out
-project/plugins/project/
-src_managed/
-target/
+target
 TODO*
+
+# Temporary files
+*.csv
+/samples
