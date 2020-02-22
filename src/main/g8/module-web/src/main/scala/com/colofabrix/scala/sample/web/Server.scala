@@ -11,7 +11,7 @@ object Server {
   private[this] val logger = getLogger
 
   def main(server: Http4sServer[IO]): IO[_] = IO {
-    logger.info(s"Started ${BuildInfo.description} version ${BuildInfo.version}")
+    logger.info(s"Started \${BuildInfo.description} version \${BuildInfo.version}")
     logger.trace(server.toString)
 
     if (serviceConfig.server.debugMode) {

@@ -25,6 +25,6 @@ object config {
       .at(BuildInfo.projectPackage)
       .loadOrThrow[AppConfig]
 
-  logger.info(s"Loaded configuration: ${Show[AppConfig].show(serviceConfig)}")
+  logger.info(s"Loaded configuration: \${Show[AppConfig].show(serviceConfig)}")
 
 }

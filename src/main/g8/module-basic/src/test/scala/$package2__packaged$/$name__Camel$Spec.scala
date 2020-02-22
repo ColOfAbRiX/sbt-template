@@ -1,10 +1,10 @@
-package com.colofabrix.scala.sample
+package $package1$
 
 import org.scalatest._
 import org.scalatest.flatspec._
 import org.scalatest.matchers.should._
 
-class InputProcessorUtilsSpecs extends AnyFlatSpec with Matchers {
+class $name;format="Camel"$Specs extends AnyFlatSpec with Matchers {
 
   "sample test" should "be a sample test" in {
     "sample" should equal("sample")

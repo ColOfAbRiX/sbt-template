@@ -31,6 +31,6 @@ object config {
       .at(BuildInfo.projectPackage)
       .loadOrThrow[ServiceConfig]
 
-  logger.info(s"Loaded configuration: ${Show[ServiceConfig].show(serviceConfig)}")
+  logger.info(s"Loaded configuration: \${Show[ServiceConfig].show(serviceConfig)}")
 
 }

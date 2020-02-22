@@ -1,15 +1,7 @@
-package com.colofabrix.scala.root
+package com.colofabrix.scala.sample
 
-import cats.effect._
-import cats.syntax.all._
+object Sample extends App {
 
-object Main extends IOApp {
+  System.out.println("Hello, World!")
 
-  def run(args: List[String]): IO[ExitCode] =
-    args.headOption match {
-      case Some(name) =>
-        IO(println(s"Hello, $name.")).as(ExitCode.Success)
-      case None =>
-        IO(System.err.println("Usage: MyApp name")).as(ExitCode(2))
-    }
 }

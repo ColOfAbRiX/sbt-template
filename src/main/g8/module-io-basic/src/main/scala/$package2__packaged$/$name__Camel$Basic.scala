@@ -1,9 +1,9 @@
-package com.colofabrix.scala.sample
+package $package1$
 
 import cats.effect._
 import cats.implicits._
 
-object SampleIoBasic extends IOApp {
+object $name;format="Camel"$IoBasic extends IOApp {
 
   def run(args: List[String]): IO[ExitCode] =
     IO {

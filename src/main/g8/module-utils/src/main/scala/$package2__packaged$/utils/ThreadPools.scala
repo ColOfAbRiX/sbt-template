@@ -1,4 +1,4 @@
-package com.colofabrix.scala.sample.utils
+package $package1$.utils
 
 import java.util.concurrent._
 import java.util.concurrent.atomic.AtomicLong

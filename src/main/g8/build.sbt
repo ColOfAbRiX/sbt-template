@@ -1,10 +1,10 @@
 import Dependencies._
 import AllProjectsKeys.autoImport._
 
-lazy val ScalaLangVersion = "2.13.0"
+lazy val ScalaLangVersion = "$scalaVersion$"
 
 // General
-ThisBuild / organization := "com.colofabrix.scala.sample"
+ThisBuild / organization := "$package1$"
 ThisBuild / scalaVersion := ScalaLangVersion
 
 // Compiler options
@@ -41,18 +41,18 @@ ThisBuild / libraryDependencies ++= Seq(
 lazy val rootProject: Project = project
   .in(file("."))
   .settings(
-    name := "sample",
-    description := "Sample Project",
+    name := "$name;format="camel"$",
+    description := "$name;format="lower"$",
   )
   .aggregate(
-    sampleBasic,
-    sampleIoBasic,
-    sampleApp,
-    sampleWeb,
+    $name;format="lower"$Basic,
+    $name;format="lower"$IoBasic,
+    $name;format="lower"$App,
+    $name;format="lower"$Web,
   )
 
 // Utils project
-lazy val sampleUtils = project
+lazy val $name;format="lower"$Utils = project
   .in(file("module-utils"))
   .settings(
     name := "utils",
@@ -66,7 +66,7 @@ lazy val sampleUtils = project
   )
 
 // Sample basic application
-lazy val sampleBasic = project
+lazy val $name;format="lower"$Basic = project
   .in(file("module-basic"))
   .dependsOn(
   )
@@ -75,11 +75,12 @@ lazy val sampleBasic = project
     description := "Basic application",
     libraryDependencies ++= Seq(
     ).flatten ++ Seq(
+      ScalatestDep,
     ),
   )
 
 // Sample basic application with IO
-lazy val sampleIoBasic = project
+lazy val $name;format="lower"$IoBasic = project
   .in(file("module-io-basic"))
   .dependsOn(
   )
@@ -92,14 +93,15 @@ lazy val sampleIoBasic = project
     libraryDependencies ++= Seq(
       CatsBundle,
     ).flatten ++ Seq(
+      ScalatestDep,
     ),
   )
 
 // Sample application
-lazy val sampleApp = project
+lazy val $name;format="lower"$App = project
   .in(file("module-app"))
   .dependsOn(
-    sampleUtils
+    $name;format="lower"$Utils
   )
   .enablePlugins(BuildInfoPlugin)
   .settings(
@@ -111,15 +113,16 @@ lazy val sampleApp = project
       CatsBundle,
       LoggingBundle
     ).flatten ++ Seq(
-      PureconfigDep
+      ScalatestDep,
+      PureconfigDep,
     ),
   )
 
 // Sample web application
-lazy val sampleWeb = project
+lazy val $name;format="lower"$Web = project
   .in(file("module-web"))
   .dependsOn(
-    sampleUtils
+    $name;format="lower"$Utils
   )
   .enablePlugins(BuildInfoPlugin)
   .settings(

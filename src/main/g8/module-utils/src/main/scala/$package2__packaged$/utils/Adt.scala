@@ -1,4 +1,4 @@
-package com.colofabrix.scala.sample.utils
+package $package1$.utils
 
 import cats.Show
 

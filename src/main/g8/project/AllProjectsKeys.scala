@@ -14,7 +14,7 @@ object AllProjectsKeys extends AutoPlugin {
 
   override lazy val projectSettings = Seq(
     projectPackage := {
-      organization.value + "." + name.value.replaceAll("-service$", "").replaceAll("-", "")
+      organization.value + "." + name.value.replaceAll("-service\$", "").replaceAll("-", "")
     },
     projectBuildInfo := Seq[BuildInfoKey](
       "organization"   -> organization.value,
