@@ -42,7 +42,7 @@ lazy val rootProject: Project = project
   .in(file("."))
   .settings(
     name := "$name;format="normalize"$",
-    description := "$description$",
+    description := "$desc$",
   )
   .aggregate(
 $if(useBasic.truthy)$
@@ -65,7 +65,7 @@ lazy val $name;format="camel"$Utils = project
   .in(file("module-utils"))
   .settings(
     name := "utils",
-    description := "Global Utilities",
+    description := "Project Utilities",
     libraryDependencies ++= Seq(
       CatsCoreDep,
       CatsScalaTestDep,
@@ -83,7 +83,7 @@ lazy val $name;format="camel"$$basicProject;format="Camel"$ = project
   )
   .settings(
     name := "basic",
-    description := "Basic application",
+    description := "",
     libraryDependencies ++= Seq(
     ).flatten ++ Seq(
       ScalatestDep,
@@ -100,7 +100,7 @@ lazy val $name;format="camel"$$ioBasicProject;format="Camel"$ = project
   .enablePlugins(BuildInfoPlugin)
   .settings(
     name := "io-basic",
-    description := "Basic application with IO",
+    description := "",
     buildInfoPackage := projectPackage.value,
     buildInfoKeys ++= projectBuildInfo.value,
     libraryDependencies ++= Seq(
@@ -121,7 +121,7 @@ lazy val $name;format="camel"$$appProject;format="Camel"$ = project
   .enablePlugins(BuildInfoPlugin)
   .settings(
     name := "app",
-    description := "Basic full-fledged application",
+    description := "",
     buildInfoPackage := projectPackage.value,
     buildInfoKeys ++= projectBuildInfo.value,
     libraryDependencies ++= Seq(
@@ -144,7 +144,7 @@ lazy val $name;format="camel"$$webProject;format="Camel"$ = project
   .enablePlugins(BuildInfoPlugin)
   .settings(
     name := "web",
-    description := "Basic web application",
+    description := "",
     buildInfoPackage := projectPackage.value,
     buildInfoKeys ++= projectBuildInfo.value,
     libraryDependencies ++= Seq(
