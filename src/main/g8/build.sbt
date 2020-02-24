@@ -45,12 +45,21 @@ lazy val rootProject: Project = project
     description := "$description$",
   )
   .aggregate(
+$if(useBasic.truthy)$
     $name;format="camel"$$basicProject;format="Camel"$,
+$endif$
+$if(useIoBasic.truthy)$
     $name;format="camel"$$ioBasicProject;format="Camel"$,
+$endif$
+$if(useApp.truthy)$
     $name;format="camel"$$appProject;format="Camel"$,
+$endif$
+$if(useWeb.truthy)$
     $name;format="camel"$$webProject;format="Camel"$,
+$endif$
   )
 
+$if(useApp.truthy || useWeb.truthy)$
 // Utils project
 lazy val $name;format="camel"$Utils = project
   .in(file("module-utils"))
@@ -65,6 +74,8 @@ lazy val $name;format="camel"$Utils = project
     ),
   )
 
+$endif$
+$if(useBasic.truthy)$
 // Sample basic application
 lazy val $name;format="camel"$$basicProject;format="Camel"$ = project
   .in(file("module-basic"))
@@ -79,6 +90,8 @@ lazy val $name;format="camel"$$basicProject;format="Camel"$ = project
     ),
   )
 
+$endif$
+$if(useIoBasic.truthy)$
 // Sample basic application with IO
 lazy val $name;format="camel"$$ioBasicProject;format="Camel"$ = project
   .in(file("module-io-basic"))
@@ -97,6 +110,8 @@ lazy val $name;format="camel"$$ioBasicProject;format="Camel"$ = project
     ),
   )
 
+$endif$
+$if(useApp.truthy)$
 // Sample application
 lazy val $name;format="camel"$$appProject;format="Camel"$ = project
   .in(file("module-app"))
@@ -118,6 +133,8 @@ lazy val $name;format="camel"$$appProject;format="Camel"$ = project
     ),
   )
 
+$endif$
+$if(useWeb.truthy)$
 // Sample web application
 lazy val $name;format="camel"$$webProject;format="Camel"$ = project
   .in(file("module-web"))
@@ -137,3 +154,4 @@ lazy val $name;format="camel"$$webProject;format="Camel"$ = project
       ShapelessDep,
     ),
   )
+$endif$
