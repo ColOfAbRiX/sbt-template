@@ -4,7 +4,7 @@ import AllProjectsKeys.autoImport._
 lazy val ScalaLangVersion = "$scalaVersion$"
 
 // General
-ThisBuild / organization := "$package1$"
+ThisBuild / organization := "$package$"
 ThisBuild / scalaVersion := ScalaLangVersion
 
 // Compiler options
@@ -41,18 +41,18 @@ ThisBuild / libraryDependencies ++= Seq(
 lazy val rootProject: Project = project
   .in(file("."))
   .settings(
-    name := "$name;format="camel"$",
-    description := "$name;format="lower"$",
+    name := "$name;format="normalize"$",
+    description := "$description$",
   )
   .aggregate(
-    $name;format="lower"$Basic,
-    $name;format="lower"$IoBasic,
-    $name;format="lower"$App,
-    $name;format="lower"$Web,
+    $name;format="camel"$$basicProject;format="Camel"$,
+    $name;format="camel"$$ioBasicProject;format="Camel"$,
+    $name;format="camel"$$appProject;format="Camel"$,
+    $name;format="camel"$$webProject;format="Camel"$,
   )
 
 // Utils project
-lazy val $name;format="lower"$Utils = project
+lazy val $name;format="camel"$Utils = project
   .in(file("module-utils"))
   .settings(
     name := "utils",
@@ -66,7 +66,7 @@ lazy val $name;format="lower"$Utils = project
   )
 
 // Sample basic application
-lazy val $name;format="lower"$Basic = project
+lazy val $name;format="camel"$$basicProject;format="Camel"$ = project
   .in(file("module-basic"))
   .dependsOn(
   )
@@ -80,7 +80,7 @@ lazy val $name;format="lower"$Basic = project
   )
 
 // Sample basic application with IO
-lazy val $name;format="lower"$IoBasic = project
+lazy val $name;format="camel"$$ioBasicProject;format="Camel"$ = project
   .in(file("module-io-basic"))
   .dependsOn(
   )
@@ -98,10 +98,10 @@ lazy val $name;format="lower"$IoBasic = project
   )
 
 // Sample application
-lazy val $name;format="lower"$App = project
+lazy val $name;format="camel"$$appProject;format="Camel"$ = project
   .in(file("module-app"))
   .dependsOn(
-    $name;format="lower"$Utils
+    $name;format="camel"$Utils
   )
   .enablePlugins(BuildInfoPlugin)
   .settings(
@@ -119,10 +119,10 @@ lazy val $name;format="lower"$App = project
   )
 
 // Sample web application
-lazy val $name;format="lower"$Web = project
+lazy val $name;format="camel"$$webProject;format="Camel"$ = project
   .in(file("module-web"))
   .dependsOn(
-    $name;format="lower"$Utils
+    $name;format="camel"$Utils
   )
   .enablePlugins(BuildInfoPlugin)
   .settings(
