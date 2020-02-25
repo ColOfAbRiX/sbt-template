@@ -15,12 +15,14 @@ ThisBuild / dynverVTagPrefix := false
 
 // Wartremover
 ThisBuild / wartremoverExcluded ++= (baseDirectory.value * "**" / "src" / "test").get
+$if(useIoBasic.truthy || useApp.truthy || useWeb)$
 ThisBuild / wartremoverErrors ++= Warts.allBut(
   Wart.Any,
   Wart.Nothing,
   Wart.Overloading,
   Wart.ToString,
 )
+$endif$
 
 // Scalafmt
 ThisBuild / scalafmtOnCompile := true
@@ -38,7 +40,7 @@ ThisBuild / libraryDependencies ++= Seq(
 //  PROJECTS  //
 
 // Root project
-lazy val rootProject: Project = project
+lazy val $name;format="camel"$Root: Project = project
   .in(file("."))
   .settings(
     name := "$name;format="normalize"$",

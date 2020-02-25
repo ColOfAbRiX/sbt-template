@@ -8,4 +8,4 @@ MIT
 
 ## Author Information
 
-Fabrizio Colonna (@ColOfAbRiX)
+$author$

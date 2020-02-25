@@ -2,6 +2,6 @@ package $package$.$basicProject;format="lower,package"$
 
 object $name;format="Camel"$Basic extends App {
 
-  System.out.println("Hello, World!")
+  println("Hello, World! I am $name$ project, $basicProject$ module")
 
 }

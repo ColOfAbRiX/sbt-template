@@ -7,7 +7,7 @@ object $name;format="Camel"$IoBasic extends IOApp {
 
   def run(args: List[String]): IO[ExitCode] =
     IO {
-      System.out.println("Hello, World!")
+      println("Hello, World! I am $name$ project, $ioBasicProject$ module")
     }.as(ExitCode.Success)
 
 }

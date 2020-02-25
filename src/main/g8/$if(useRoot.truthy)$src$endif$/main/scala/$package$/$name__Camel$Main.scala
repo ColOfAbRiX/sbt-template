@@ -1,7 +1,7 @@
-package com.colofabrix.scala.sample
+package $package$
 
 object Sample extends App {
 
-  System.out.println("Hello, World!")
+  println("Hello, World! I am $name$ project")
 
 }

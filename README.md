@@ -1,16 +1,26 @@
 # SBT Templates
 
-A series of [Giter8][g8] templates for structured projects!
+A series of SBT [Giter8](http://www.foundweekends.org/giter8/) templates for structured projects!
 
 It includes:
 
-* Best practice SBT plugins
+* Best practice SBT plugins and configuration for Functional Programming
 * Most commonly used libraries
-* Standard SBT project
-* Module with standard Main method
-* Module with Cat's IO
-* Module for complex application
-* Module for HTTP service
+* Standard simple SBT single project
+* A module with for an application with a standard Main method
+* A module for an application that uses Cat's IO
+* A module for a complex application with predefined libraries and configuration
+* A module for a HTTP service with predefined libraries and configuration
+
+## Using the template
+
+To create a new project with SBT using this template run:
+
+```shell
+sbt new colofabrix/sbt-template.g8
+```
+
+You will be asked to choose the configuration for you project using the following variables.
 
 ## Variables
 
@@ -19,7 +29,7 @@ It includes:
 * `name`: Name of the repository. Defaults to: `Sample`
 * `project`: Name of the project. Defaults to: `Basic`
 * `scalaVersion`: Version of Scala. Defaults to: `2.13.0`
-* `description`: Description of the project. Defaults to: `Sample Scala SBT project`
+* `desc`: Description of the project. Defaults to: `Sample Scala SBT project`
 * `organization`: Root package. Defaults to: `com.colofabrix.scala`
 
 ### Enabled modules
@@ -29,7 +39,6 @@ It includes:
 * `useIoBasic`: Create the Cat's IO application module. Defaults to `no`
 * `useApp`: Create the complex application module. Defaults to `no`
 * `useWeb`: Create the http service module. Defaults to `no`
-* `useUtils`: Must be set to `yes` when useApp=yes or useWeb=yes Defaults to `no`
 
 ### Modules configuration
 
