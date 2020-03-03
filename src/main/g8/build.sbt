@@ -15,7 +15,7 @@ ThisBuild / dynverVTagPrefix := false
 
 // Wartremover
 ThisBuild / wartremoverExcluded ++= (baseDirectory.value * "**" / "src" / "test").get
-$if(useIoBasic.truthy || useApp.truthy || useWeb)$
+$if(addIoBasicModule.truthy || addAppModule.truthy || addWebModule)$
 ThisBuild / wartremoverErrors ++= Warts.allBut(
   Wart.Any,
   Wart.Nothing,
@@ -47,21 +47,21 @@ lazy val $name;format="camel"$Root: Project = project
     description := "$desc$",
   )
   .aggregate(
-$if(useBasic.truthy)$
-    $name;format="camel"$$basicProject;format="Camel"$,
+$if(addBasicModule.truthy)$
+    $name;format="camel"$$basicModuleName;format="Camel"$,
 $endif$
-$if(useIoBasic.truthy)$
-    $name;format="camel"$$ioBasicProject;format="Camel"$,
+$if(addIoBasicModule.truthy)$
+    $name;format="camel"$$ioBasicModuleName;format="Camel"$,
 $endif$
-$if(useApp.truthy)$
-    $name;format="camel"$$appProject;format="Camel"$,
+$if(addAppModule.truthy)$
+    $name;format="camel"$$appModuleName;format="Camel"$,
 $endif$
-$if(useWeb.truthy)$
-    $name;format="camel"$$webProject;format="Camel"$,
+$if(addWebModule.truthy)$
+    $name;format="camel"$$webModuleName;format="Camel"$,
 $endif$
   )
 
-$if(useApp.truthy || useWeb.truthy)$
+$if(addAppModule.truthy || addWebModule.truthy)$
 // Utils project
 lazy val $name;format="camel"$Utils = project
   .in(file("module-utils"))
@@ -77,9 +77,9 @@ lazy val $name;format="camel"$Utils = project
   )
 
 $endif$
-$if(useBasic.truthy)$
+$if(addBasicModule.truthy)$
 // Sample basic application
-lazy val $name;format="camel"$$basicProject;format="Camel"$ = project
+lazy val $name;format="camel"$$basicModuleName;format="Camel"$ = project
   .in(file("module-basic"))
   .dependsOn(
   )
@@ -93,9 +93,9 @@ lazy val $name;format="camel"$$basicProject;format="Camel"$ = project
   )
 
 $endif$
-$if(useIoBasic.truthy)$
+$if(addIoBasicModule.truthy)$
 // Sample basic application with IO
-lazy val $name;format="camel"$$ioBasicProject;format="Camel"$ = project
+lazy val $name;format="camel"$$ioBasicModuleName;format="Camel"$ = project
   .in(file("module-io-basic"))
   .dependsOn(
   )
@@ -113,9 +113,9 @@ lazy val $name;format="camel"$$ioBasicProject;format="Camel"$ = project
   )
 
 $endif$
-$if(useApp.truthy)$
+$if(addAppModule.truthy)$
 // Sample application
-lazy val $name;format="camel"$$appProject;format="Camel"$ = project
+lazy val $name;format="camel"$$appModuleName;format="Camel"$ = project
   .in(file("module-app"))
   .dependsOn(
     $name;format="camel"$Utils
@@ -136,9 +136,9 @@ lazy val $name;format="camel"$$appProject;format="Camel"$ = project
   )
 
 $endif$
-$if(useWeb.truthy)$
+$if(addWebModule.truthy)$
 // Sample web application
-lazy val $name;format="camel"$$webProject;format="Camel"$ = project
+lazy val $name;format="camel"$$webModuleName;format="Camel"$ = project
   .in(file("module-web"))
   .dependsOn(
     $name;format="camel"$Utils
