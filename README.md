@@ -34,18 +34,19 @@ You will be asked to choose the configuration for you project using the followin
 
 ### Enabled modules
 
-* `useRoot`: Create the standard SBT module. Defaults to `yes`
-* `useBasic`: Create the standard main application module. Defaults to `no`
-* `useIoBasic`: Create the Cat's IO application module. Defaults to `no`
-* `useApp`: Create the complex application module. Defaults to `no`
-* `useWeb`: Create the http service module. Defaults to `no`
+* `addRootProject`: Create the standard SBT module. Defaults to `no`
+* `addRootIoProject`: Create the standard SBT module that uses IOApp. Defaults to `yes`
+* `addBasicModule`: Create the standard main application module. Defaults to `no`
+* `addIoBasicModule`: Create the Cat's IO application module. Defaults to `no`
+* `addAppModule`: Create the complex application module. Defaults to `no`
+* `addWebModule`: Create the http service module. Defaults to `no`
 
 ### Modules configuration
 
-* `basicProject`: Name of the standard main application module. Defaults to `basic`
-* `ioBasicProject`: Name of the Cat's IO application module. Defaults to `ioBasic`
-* `appProject`: Name of the complex application module. Defaults to `app`
-* `webProject`: Name of the http service module. Defaults to `web`
+* `basicModuleName`: Name of the standard main application module. Defaults to `basic`
+* `ioBasicModuleName`: Name of the Cat's IO application module. Defaults to `ioBasic`
+* `appModuleName`: Name of the complex application module. Defaults to `app`
+* `webModuleName`: Name of the http service module. Defaults to `web`
 
 ## License
 
