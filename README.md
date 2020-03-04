@@ -1,6 +1,7 @@
 # SBT Templates
 
-A series of SBT [Giter8](http://www.foundweekends.org/giter8/) templates for structured projects!
+A series of SBT [Giter8](http://www.foundweekends.org/giter8/) templates for structured projects
+in FP style!
 
 It includes:
 
@@ -27,10 +28,9 @@ You will be asked to choose the configuration for you project using the followin
 ### General
 
 * `name`: Name of the repository. Defaults to: `Sample`
-* `project`: Name of the project. Defaults to: `Basic`
-* `scalaVersion`: Version of Scala. Defaults to: `2.13.0`
 * `desc`: Description of the project. Defaults to: `Sample Scala SBT project`
 * `organization`: Root package. Defaults to: `com.colofabrix.scala`
+* `author`: Name of the author
 
 ### Enabled modules
 

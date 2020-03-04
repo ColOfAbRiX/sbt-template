@@ -1,7 +1,7 @@
 import Dependencies._
 import AllProjectsKeys.autoImport._
 
-lazy val ScalaLangVersion = "$scalaVersion$"
+lazy val ScalaLangVersion = "2.13.0"
 
 // General
 ThisBuild / organization := "$package$"
@@ -32,7 +32,7 @@ ThisBuild / libraryDependencies ++= Seq(
   BetterMonadicForPlugin,
   KindProjectorPlugin,
   PPrintDep,
-  SlainPlugin,
+  SplainPlugin,
   WartremoverPlugin,
 ) ++ Seq(
 ).flatten
@@ -45,6 +45,13 @@ lazy val $name;format="camel"$Root: Project = project
   .settings(
     name := "$name;format="normalize"$",
     description := "$desc$",
+    libraryDependencies ++= Seq(
+$if(addRootIoProject.truthy)$
+      CatsBundle,
+$endif$
+    ).flatten ++ Seq(
+      ScalatestDep,
+    ),
   )
   .aggregate(
 $if(addBasicModule.truthy)$
@@ -78,7 +85,7 @@ lazy val $name;format="camel"$Utils = project
 
 $endif$
 $if(addBasicModule.truthy)$
-// Sample basic application
+// Standard basic application
 lazy val $name;format="camel"$$basicModuleName;format="Camel"$ = project
   .in(file("module-basic"))
   .dependsOn(
@@ -94,7 +101,7 @@ lazy val $name;format="camel"$$basicModuleName;format="Camel"$ = project
 
 $endif$
 $if(addIoBasicModule.truthy)$
-// Sample basic application with IO
+// Standard basic application with cats and IOApp
 lazy val $name;format="camel"$$ioBasicModuleName;format="Camel"$ = project
   .in(file("module-io-basic"))
   .dependsOn(
@@ -114,7 +121,7 @@ lazy val $name;format="camel"$$ioBasicModuleName;format="Camel"$ = project
 
 $endif$
 $if(addAppModule.truthy)$
-// Sample application
+// Modular application
 lazy val $name;format="camel"$$appModuleName;format="Camel"$ = project
   .in(file("module-app"))
   .dependsOn(
@@ -137,7 +144,7 @@ lazy val $name;format="camel"$$appModuleName;format="Camel"$ = project
 
 $endif$
 $if(addWebModule.truthy)$
-// Sample web application
+// Modular web application
 lazy val $name;format="camel"$$webModuleName;format="Camel"$ = project
   .in(file("module-web"))
   .dependsOn(
