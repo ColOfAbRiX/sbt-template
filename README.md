@@ -5,8 +5,9 @@ in FP style!
 
 It includes:
 
+* SBT multi-module support
 * Best practice SBT plugins and configuration for Functional Programming
-* Most commonly used libraries
+* Most commonly used libraries for small and medium size projects
 * Standard simple SBT single project
 * A module with for an application with a standard Main method
 * A module for an application that uses Cat's IO
@@ -32,10 +33,14 @@ You will be asked to choose the configuration for you project using the followin
 * `organization`: Root package. Defaults to: `com.colofabrix.scala`
 * `author`: Name of the author
 
+### Options
+
+* `enforceBestPractices`: Perform linting for Scala and FP best practices. Defaults to: `true`
+
 ### Enabled modules
 
-* `addRootProject`: Create the standard SBT module. Defaults to `no`
-* `addRootIoProject`: Create the standard SBT module that uses IOApp. Defaults to `yes`
+* `addRootProject`: Create the standard flat SBT project. Defaults to `no`
+* `addRootIoProject`: Create the standard flat SBT project that uses Cat's IOApp. Defaults to `yes`
 * `addBasicModule`: Create the standard main application module. Defaults to `no`
 * `addIoBasicModule`: Create the Cat's IO application module. Defaults to `no`
 * `addAppModule`: Create the complex application module. Defaults to `no`

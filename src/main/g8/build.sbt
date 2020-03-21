@@ -4,14 +4,17 @@ import AllProjectsKeys.autoImport._
 lazy val ScalaLangVersion = "2.13.0"
 
 // General
-ThisBuild / organization := "$package$"
+scalaVersion := ScalaLangVersion
+Global / scalaVersion := ScalaLangVersion
 ThisBuild / scalaVersion := ScalaLangVersion
-
-// Compiler options
-ThisBuild / scalacOptions ++= Compiler.TpolecatOptions ++ Seq("-P:splain:all")
+ThisBuild / organization := "$package$"
 
 // GIT version information
 ThisBuild / dynverVTagPrefix := false
+
+$if(enforceBestPractices.truthy)$
+// Compiler options
+ThisBuild / scalacOptions ++= Compiler.TpolecatOptions ++ Seq("-P:splain:all")
 
 // Wartremover
 ThisBuild / wartremoverExcluded ++= (baseDirectory.value * "**" / "src" / "test").get
@@ -27,13 +30,16 @@ $endif$
 // Scalafmt
 ThisBuild / scalafmtOnCompile := true
 
+$endif$
 // Global dependencies and compiler plugins
 ThisBuild / libraryDependencies ++= Seq(
   BetterMonadicForPlugin,
   KindProjectorPlugin,
   PPrintDep,
   SplainPlugin,
+$if(enforceBestPractices.truthy)$
   WartremoverPlugin,
+$endif$
 ) ++ Seq(
 ).flatten
 

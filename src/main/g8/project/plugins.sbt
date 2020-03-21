@@ -19,5 +19,7 @@ addSbtPlugin("com.eed3si9n"     % "sbt-buildinfo"       % BuildinfoVesion)
 addSbtPlugin("com.orrsella"     % "sbt-stats"           % SbtStatsVersion)
 addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % NativePackagerVersion)
 addSbtPlugin("org.duhemm"       % "sbt-errors-summary"  % ErrorsSummaryVersion)
+$if(enforceBestPractices.truthy)$
 addSbtPlugin("org.scalameta"    % "sbt-scalafmt"        % ScalafmtVersion)
 addSbtPlugin("org.wartremover"  % "sbt-wartremover"     % WartremoverVersion)
+$endif$
